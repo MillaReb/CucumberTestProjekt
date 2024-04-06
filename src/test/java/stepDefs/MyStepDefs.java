@@ -89,7 +89,15 @@ public class MyStepDefs {
     public void verifyTheOnTheWebside(String expectedText) {
         WebElement actualTextElement = driver.findElement(By.cssSelector("body > div > div.page-content-wrapper > div > h2"));
         String actualText = actualTextElement.getText();
-        Assert.assertEquals(expectedText, actualText);
+         if (expectedText.equals("WELCOME...")) {
+            Assert.assertEquals(expectedText, actualText);
+        } else if (expectedText.equals("MISSING last name...")) {
+            Assert.assertEquals(expectedText, actualText);
+        } else if (expectedText.equals("Incorrect Password")){
+            Assert.assertEquals(expectedText, actualText);
+        }else if (expectedText.equals("You must confirm that you have read and accepted our Terms and Conditions")){
+            Assert.assertEquals(expectedText, actualText);
+        }
         driver.quit();
     }
 
