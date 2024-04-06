@@ -16,7 +16,7 @@ Feature: User Registration
     And I have klicked over "18"
     And I have klicked code of ethics
     When Press submmit button
-    Then Verify the "text" on the webside
+    Then Verify the "WELCOME..." on the webside
 
   Scenario Unsuccssesful registration-Missing lastname
     Given I am on the registration page
@@ -31,7 +31,7 @@ Feature: User Registration
     And I have klicked over "18"
     And I have klicked code of ethics
     When Press submmit button
-    Then Verify the "text" on the webside
+    Then Verify the "MISSING last name..." on the webside
 
   Scenario Unsuccssesful registration - Pasword missmatch
     Given I am on the registration page
@@ -46,7 +46,7 @@ Feature: User Registration
     And I have klicked over "18"
     And I have klicked code of ethics
     When Press submmit button
-    Then Verify the "text" on the webside
+    Then Verify the "Incorrect Password" on the webside
 
   Scenario Unsuccssesful registration - Terms and conditions not accepted
     Given I am on the registration page
@@ -60,6 +60,7 @@ Feature: User Registration
     And I have klicked over "18"
     And I have klicked code of ethics
     When Press submmit button
-    Then Verify the "text" on the webside
+    Then Verify the "You must confirm that you have read and accepted our Terms and Conditions" on the webside
+
 
 
