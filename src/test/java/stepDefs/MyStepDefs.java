@@ -85,20 +85,39 @@ public class MyStepDefs {
         submitButton.click();
     }
 
-    @Then("Verify the {string} on the webside")
+      @Then("Verify the {string} on the webside")
     public void verifyTheOnTheWebside(String expectedText) {
-        WebElement actualTextElement = driver.findElement(By.cssSelector("body > div > div.page-content-wrapper > div > h2"));
-        String actualText = actualTextElement.getText();
-         if (expectedText.equals("WELCOME...")) {
-            Assert.assertEquals(expectedText, actualText);
-        } else if (expectedText.equals("MISSING last name...")) {
-            Assert.assertEquals(expectedText, actualText);
-        } else if (expectedText.equals("Incorrect Password")){
-            Assert.assertEquals(expectedText, actualText);
-        }else if (expectedText.equals("You must confirm that you have read and accepted our Terms and Conditions")){
-            Assert.assertEquals(expectedText, actualText);
+        WebElement actualTextElement;
+        
+        switch (expectedText) {
+            case "THANK YOU FOR CREATING AN ACCOUNT WITH BASKETBALL ENGLAND":
+                actualTextElement = driver.findElement(By.cssSelector("#class=bold  gray  text-center  margin-bottom-40"));
+                break;
+            case "Last Name is required":
+                actualTextElement = driver.findElement(By.cssSelector("#member_lastname")); 
+                break;
+            case "Incorrect Password":
+                actualTextElement = driver.findElement(By.cssSelector("#type=password")); 
+                break;
+            case "You must confirm that you have read and accepted our Terms and Conditions":
+                actualTextElement = driver.findElement(By.cssSelector("#for=sign_up_25"));
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown expected text: " + expectedText);
         }
+        
+        String actualText = actualTextElement.getText();  
+        
+        if (!expectedText.equals(actualText)) {
+            System.out.println("Förväntad text: " + expectedText); 
+            System.out.println("Faktisk text: " + actualText);
+        }
+
+        //assert-fel om texten inte stämmer
+        Assert.assertEquals(expectedText, actualText);
+        
         driver.quit();
+
     }
 
 }
