@@ -16,7 +16,7 @@ Feature: User Registration
     And I have klicked over "18"
     And I have klicked code of ethics
     When Press submmit button
-    Then Verify the "WELCOME..." on the webside
+    Then Verify the "THANK YOU FOR CREATING AN ACCOUNT WITH BASKETBALL ENGLAND" on the webside
 
   Scenario Unsuccssesful registration-Missing lastname
     Given I am on the registration page
@@ -31,7 +31,7 @@ Feature: User Registration
     And I have klicked over "18"
     And I have klicked code of ethics
     When Press submmit button
-    Then Verify the "MISSING last name..." on the webside
+    Then Verify the "Last Name is required" on the webside
 
   Scenario Unsuccssesful registration - Pasword missmatch
     Given I am on the registration page
